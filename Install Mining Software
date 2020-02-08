@@ -1,0 +1,24 @@
+Install Mining Software:
+sudo apt-get update -y
+
+sudo apt-get install build-essential autoconf automake libtool pkg-config libcurl4-openssl-dev libudev-dev \
+libjansson-dev libncurses5-dev -y
+
+git clone https://github.com/wareck/cgminer-gekko.git
+
+cd cgminer-gekko
+
+sudo usermod -a -G dialout,plugdev $USER
+
+sudo cp 01-cgminer.rules /etc/udev/rules.d/
+
+CFLAGS="-O2 -march=native" ./autogen.sh
+
+./configure --enable-gekko
+
+make
+
+make install
+
+Start Miner:
+./cgminer -o stratum+tcp://POOL -u WORKER -p password --gekko-compac-freq 200 --gekko-2pac-freq 150 

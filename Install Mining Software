@@ -1,5 +1,7 @@
 Install Mining Software:
-sudo apt-get update -y
+sudo apt-get update
+
+sudo apt-get upgrade -y
 
 sudo apt-get install build-essential autoconf automake libtool pkg-config libcurl4-openssl-dev libudev-dev \
 libjansson-dev libncurses5-dev -y
